@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Royalty-FUND</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <style>
+      * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  :root {
+    --primary: #03011c;
+    --secondery: #1c1847;
+    --accent: #0cb8c2;
+    --text: #fff;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--primary);
+    font-family: Poppins, sans-serif;
+  }
+  a {
+    text-decoration: none;
+    color: var(--text);
+  }
+  img {
+    width: 100%;
+  }
+  /* utility classes */
+.container {
+    padding: 4rem 2rem;
+    color: var(--text);
+  }
+  .highlighted {
+    color: var(--accent);
+  }
+  .hidden {
+    display: none;
+  }
+  .btn {
+    background-color: var(--accent);
+    color: var(--text);
+    padding: 0.5rem 3rem;
+    border-radius: 5rem;
+    display: inline-block;
+    margin-top: 2rem;
+    border: 2px solid var(--accent);
+  }
+  .btn:hover {
+    background-color: transparent;
+    color: var(--accent);
+  }
+  /* Header style */
+  .nav {
+    background-color: var(--secondery);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    width: 100%;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+  .nav-links {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 50px;
+    background-color: var(--secondery);
+    width: 100%;
+    left: -200%;
+    padding: 1rem;
+    transition: left 0.5s ease;
+  }
+  .nav-active {
+    left: 0;
+  }
+  .nav-item {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    position: relative;
+  }
+  .nav-item::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: rgb(56, 56, 56);
+    margin-top: 0.5rem;
+  }
+  .nav-item:hover {
+    opacity: 1;
+  }
+  .nav-item-active::after {
+    background-color: var(--accent);
+    opacity: 1;
+  }
+  .toggler .line {
+    width: 30px;
+    height: 2px;
+    display: block;
+    background-color: var(--text);
+    margin: 5px;
+  }
+  /* Hero styles */
+.hero {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    color: var(--text);
+  }
+  
+  .hero-img {
+    width: 20rem;
+    height: 20rem;
+    
+    padding-top: 3rem;
+  
+  }
+  
+  .hero-info {
+    text-align: center;
+    padding-top: 3rem;
+  }
+  
+  .title {
+    font-weight: 1.2rem;
+  }
+  
+  .hero-description {
+    opacity: 0.7;
+  }
+  /* About style */
+.about {
+    color: var(--text);
+  }
+  
+  .about-info {
+    padding-top: 2rem;
+  }
+  
+  .description {
+    opacity: 0.7;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .secondery-title {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+  
+  .secondery-title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 0.5rem;
+    background-color: var(--accent);
+  }
+  /* Services styles */
+.services-item {
+    background: var(--secondery);
+    border-radius: 10px;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .services-item i {
+    font-size: 4rem;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .projects-tab-btn {
+    background-color: transparent;
+    border: 2px solid var(--accent);
+    color: var(--text);
+    padding: 0.3rem 1.5rem;
+    border-radius: 5rem; 
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .projects-tab-btn-active {
+    background-color: var(--accent);
+  }
+  
+  .projects-item {
+    margin-bottom: 1rem;
+  }
+  
+  .projects-item img {
+    border-radius: 10px;
+  }
+  /* contact styles */
+.contact-info-item {
+    display: flex;
+  }
+  
+  .contact-info-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contact-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input,
+  textarea {
+    background: var(--secondery);
+    border: none;
+    border-radius: 10px;
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  
+  .footer {
+    color: var(--text);
+    text-align: center;
+    padding: 2rem 0;
+  }
+  /* Desktop Design */
+@media screen and (min-width: 700px) {
+    .container {
+      padding: 4rem 6rem;
+    }
+  
+    .description {
+      font-size: 1rem;
+    }
+  
+    /* grid */
+    .grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+  
+    .grid-item {
+      width: 30%;
+    }
+  
+    /* nav */
+    .nav {
+      padding-left: 6rem;
+      padding-right: 6rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .toggler {
+      display: none;
+    }
+  
+    .nav-links {
+      position: static;
+      flex-direction: row;
+      padding: 0;
+      width: auto;
+    }
+  
+    .nav-item {
+      margin: 0 0.5rem;
+    }
+  
+    .nav-item::after {
+      position: absolute;
+      top: 30px;
+      margin: 0;
+      background: none;
+    }
+  
+    .nav-item-active {
+      opacity: 1;
+    }
+  
+    .nav-item-active::after {
+      background: var(--accent);
+    }
+  
+    /* hero */
+    .hero {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .hero-info {
+      text-align: left;
+    }
+  
+    .title {
+      font-size: 5rem;
+    }
+  
+    /* About */
+    .about {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .about-img {
+      width: 40%;
+    }
+  
+    .about-info {
+      width: 55%;
+    }
+  
+    /* contact */
+    .contact {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .contact-form {
+      width: 55%;
+    }
+  
+    .submit-btn {
+      font-size: 1.5rem;
+    }
+  }
+  
+    </style>
+    
+  </head>
+  <body >
+    <header>
+        <nav class="nav">
+          <a href="/" class="logo"> <span class="highlighted"> R</span>oyalty 
+            <span class="highlighted"> F</span>UND </a>
+  
+          <div class="nav-links">
+            <a href="#home" class="nav-item nav-item-active">Home</a>
+            <a href="#about" class="nav-item">About</a>
+            <a href="#services" class="nav-item">Features</a>
+            <a href="#projects" class="nav-item">Key Points</a>
+            <a href="#contact" class="nav-item">Contact</a>
+          </div>
+  
+          <div class="toggler">
+            <span class="line"></span><span class="line"></span
+            ><span class="line"></span>
+          </div>
+        </nav>
+      </header>
+      <section class="hero container" id="home">
+        
+            <div class="hero-info ">
+                <h1 class="title">Royalty <span class="highlighted">FUND</span> <br></h1>
+                <p class="hero-description">A Dedicated royalty-financing marketplace for Music Songs, Film, Educational Courses, New Start-Ups, etc Intellectual property (IP) in India.
+                      Targating High Net Indivisuals from Tier-I, Tier-II and Tier-III cities as investers </p>
+                <a href="#services" class="btn hero-btn">Features</a>
+              </div>
+        
+              <div class="hero-img">
+                <img src="images.jpg" alt="Ripudaman" />
+              </div>
+        </div>
+        
+  </section>
+  <section class="about container" id="about">
+    <div class="about-img">
+        <img src="Gemini_Generated_Image_.png"  alt="Ripudaman" />
+    
+    </div>
+
+    <div class="about-info">
+      <h2 class="secondery-title" >About </h2>
+      
+      <p class="description">
+        We are building a marketplace that helps verified creators raise funding against future royalty streams (eg: 3-5 years) from Music songs, films, Educational Courses, New Start-Ups and other IP assets. 
+        <br><br>
+        Targating High Net Indivisuals from Tier-I, Tier-II and Tier-III cities as investers
+                <br><br>
+        Investors participate through contract-based royalty-sharing deals with clear disclosures, limited access, and structured payouts, rather than public stock-like trading.
+           
+    </p>
+    <br>
+    <h3 class="highlighted">Vision: <br></h3>
+    <p class="description">
+        
+        To become India’s trusted infrastructure for financing music, film, and IP-backed cash flows through compliant private-market deals.
+        If you want, I can turn this into a clean investor pitch-page version, a fancy PDF-ready layout, or a pitch deck slide 1.
+    </p>
+
+      
+    </div>
+  </section>
+  <div class="services container" id="services">
+    <div class="services-header">
+      <h2 class="secondery-title">Features</h2>
+    </div>
+
+    <div class="grid services-grid">
+      <div class="grid-item services-item">
+        <i class="fa-solid fa-computer"></i>
+        <h3>Problem</h3>
+        <p class="description">
+            Independent creators and small studios often struggle to unlock capital from future revenue because traditional lenders do not underwrite intellectual property well. 
+            At the same time, investors want access to new, differentiated asset classes with real cash-flow backing, not just speculative startup bets.
+            
+        </p>
+      </div>
+      <div class="grid-item services-item">
+        <i class="fa-solid fa-meteor"></i>
+
+        <h3>Solution</h3>
+        <p class="description">
+            We are building a marketplace that helps verified creators raise funding against future royalty streams from songs, films, and other IP assets. 
+            Investors participate through contract-based royalty-sharing deals with clear disclosures, limited access, and structured payouts, rather than public stock-like trading.
+            
+        </p>
+      </div>
+      <div class="grid-item services-item">
+        <i class="fa-solid fa-pen-nib"></i>
+        <h3> How It Works</h3>
+        <p class="description">
+            Creators submit proof of rights, projected royalty income, and funding requirements. 
+            The platform verifies ownership, standardizes deal terms, connects the project to eligible investors, and routes collections through controlled payment flows so investors receive their agreed share over time.
+        </p>
+      </div>
+      <div class="grid-item services-item">
+        <i class="fa-solid fa-pen-nib"></i>
+        <h3> Why Now</h3>
+        <p class="description">
+            India’s creator economy is growing, but IP financing remains underdeveloped. 
+            At the same time, public retail equity crowdfunding faces major regulatory limits, while private placement structures remain the most realistic path for compliant IP-backed fundraising.
+        </p>
+      </div>
+      <div class="grid-item services-item">
+        <i class="fa-solid fa-pen-nib"></i>
+        <h3> Compliance Positioning</h3>
+        <p class="description">
+            The platform will operate as a private, invite-only funding marketplace with strict KYC, investor eligibility checks, disclosure documents, and legal review of each transaction. 
+            It will not market itself as a public stock exchange or open retail crowdfunding app, since public solicitation and unregulated securities-like offerings can create regulatory issues in India.
+        </p>
+      </div>
+    </div>
+  </div>
+  <section class="projects container" id="projects">
+    <div class="projects-header">
+      <h2 class="secondery-title">Key Points</h2>
+
+      <div class="projects-tab">
+        <button class="projects-tab-btn" id="design">Target Users</button>
+        <p> -Independent creators.<br>
+            -Film producers and small studios.<br>            
+            -IP owners with recurring royalty income.<br>            
+            -HNIs, family offices, and other eligible private-market investors.
+        </p>
+        <br>
+
+        <button class="projects-tab-btn" id="seo">Business Model</button>
+        <p> -Deal setup fee.<br>
+            -Due diligence and verification fee.<br>            
+            -Success fee on capital raised.<br>            
+            -Servicing fee on royalty collections and distributions.<br>            
+            -Premium analytics or reporting subscriptions.
+          
+        </p>
+        <br>
+        <button class="projects-tab-btn" id="ui-ux">Use of Funds</button>
+        <p> -Product development.<br>
+            -Legal and regulatory structuring.<br>            
+            -Creator/investor onboarding.<br>            
+            -Rights verification and escrow integrations.<br>            
+            -Initial partnerships with labels, distributors, and entertainment lawyers. 
+           
+        </p>
+       
+      </div>
+    </div>
+   
+  </section>
+  <section class="container contact" id="contact">
+    <div class="contact-info">
+      <h2 class="secondery-title">Contact</h2>
+      <div class="info-container">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="contact-info-data">
+            <h3>Address</h3>
+            <p>India, Haryana, Ambala</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div class="contact-info-data">
+            <h3>Email</h3>
+            <p>rskhanna2002@gmail.com</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <i class="fa-solid fa-phone-volume"></i>
+          </div>
+          <div class="contact-info-data">
+            <h3>Phone</h3>
+            <p>+91-9306267308</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <form>
+        <input type="text" placeholder="Name" />
+        <input type="text" placeholder="Email" />
+        <textarea
+          name="message"
+          id=""
+          cols="30"
+          rows="10"
+          placeholder="Message"
+        ></textarea>
+        <button class="btn submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+      <footer class="footer">
+    <p>&copy; Ripudaman Singh Khanna <br> 2026</p>
+  </footer>
+        <script src="F:\First_Angular_Project\portfolio\portfolio.js"></script>
+  </body>
+</html>
